@@ -7,6 +7,7 @@ main :: () {
 
     day01();
     day02();
+    day03();
 }
 
 // Utils.
@@ -93,6 +94,7 @@ read_number :: ($T: Type, s: *string, $skip_trailing_whitespace := true) -> T
 
 #load "day01.jai";
 #load "day02.jai";
+#load "day03.jai";
 
 #import "Basic";
 #import "File";

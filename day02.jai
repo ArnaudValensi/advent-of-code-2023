@@ -111,7 +111,7 @@ day02_2_solve :: (input: string) -> int {
             }
         }
 
-        total += max_red * max_green *  max_blue;
+        total += max_red * max_green * max_blue;
     }
 
     return total;
