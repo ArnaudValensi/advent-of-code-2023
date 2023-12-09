@@ -5,9 +5,15 @@ main :: () {
         log("% ms elapsed.\n", elapsed * 1000);
     }
 
-    day01();
-    day02();
-    day03();
+    // day01();
+    // day02();
+    // day03();
+    // day04();
+    // day05();
+    // day06();
+    // day07();
+    // day08();
+    day09();
 }
 
 // Utils.
@@ -59,7 +65,7 @@ skip_to_next_line :: (s: *string)
 read_number :: ($T: Type, s: *string, $skip_trailing_whitespace := true) -> T
 {
     num : T;
-    
+
     #if T == s8 || T == s16 || T == s32 || T == s64
     {
         neg : bool;
@@ -90,12 +96,67 @@ read_number :: ($T: Type, s: *string, $skip_trailing_whitespace := true) -> T
     }
 }
 
+character_to_string :: (x: u8) -> string {
+    s: string;
+    s.count = 1;
+    s.data = alloc(1);
+    s[0] = x;
+    return s;
+}
+
+next_line :: (s : *string) -> string {
+    assert(s.count > 0);
+
+    result : string;
+
+    // Line ending (unix).
+    eol : string = "\n";
+
+    // Find next line ending.
+    end := find_index_from_left(<<s, eol);
+
+    // End of string.
+    if end == -1 {
+        end = s.count;
+    }
+
+    // Compute result.
+    result = <<s;
+    result.count = end;
+
+    // Advance string.
+    increment := end + eol.count;
+    s.data += increment;
+    s.count -= increment;
+
+    return result;
+}
+
+array_contains :: (array: []$T, item: T) -> bool {
+    for element: array {
+        if element == item {
+            return true;
+        }
+    }
+    return false;
+}
+
 // Imports
 
 #load "day01.jai";
 #load "day02.jai";
 #load "day03.jai";
+#load "day04.jai";
+#load "day05.jai";
+#load "day06.jai";
+#load "day07.jai";
+#load "day08.jai";
+#load "day09.jai";
 
 #import "Basic";
 #import "File";
 #import "String";
+Hash :: #import "Hash";
+#import "Hash_Table";
+#import "Math";
+#import "Sort";
