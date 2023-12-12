@@ -5,15 +5,18 @@ main :: () {
         log("% ms elapsed.\n", elapsed * 1000);
     }
 
-    day01();
-    day02();
-    day03();
-    day04();
-    day05();
-    day06();
-    day07();
-    day08();
-    day09();
+    // day01();
+    // day02();
+    // day03();
+    // day04();
+    // day05();
+    // day06();
+    // day07();
+    // day08();
+    // day09();
+    // day10();
+    // day11();
+    day12();
 }
 
 // Utils.
@@ -141,6 +144,15 @@ array_contains :: (array: []$T, item: T) -> bool {
     return false;
 }
 
+push_temporary_allocator :: () #expand {
+    assert(temporary_allocator.proc != null);
+
+    old_allocator     := context.allocator;
+    context.allocator  = temporary_allocator;
+
+    `defer context.allocator = old_allocator;
+}
+
 // Imports
 
 #load "day01.jai";
@@ -152,6 +164,9 @@ array_contains :: (array: []$T, item: T) -> bool {
 #load "day07.jai";
 #load "day08.jai";
 #load "day09.jai";
+#load "day10.jai";
+#load "day11.jai";
+#load "day12.jai";
 
 #import "Basic";
 #import "File";
@@ -160,3 +175,4 @@ Hash :: #import "Hash";
 #import "Hash_Table";
 #import "Math";
 #import "Sort";
+#import "Print_Color";
