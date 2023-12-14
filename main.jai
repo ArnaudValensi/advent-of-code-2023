@@ -16,7 +16,9 @@ main :: () {
     // day09();
     // day10();
     // day11();
-    day12();
+    // day12();
+    // day13();
+    day14();
 }
 
 // Utils.
@@ -167,6 +169,8 @@ push_temporary_allocator :: () #expand {
 #load "day10.jai";
 #load "day11.jai";
 #load "day12.jai";
+#load "day13.jai";
+#load "day14.jai";
 
 #import "Basic";
 #import "File";
