@@ -18,7 +18,8 @@ main :: () {
     // day11();
     // day12();
     // day13();
-    day14();
+    // day14();
+    day15();
 }
 
 // Utils.
@@ -137,6 +138,23 @@ next_line :: (s : *string) -> string {
     return result;
 }
 
+read_next_split :: (s: *string, separator: u8) -> string
+{
+    word := <<s;
+    word.count = 0;
+
+    while s.count && s.data[0] != separator {
+        word.count += 1;
+        advance(s);
+    }
+
+    while s.count && s.data[0] == separator {
+        advance(s);
+    }
+
+    return word;
+}
+
 array_contains :: (array: []$T, item: T) -> bool {
     for element: array {
         if element == item {
@@ -171,6 +189,7 @@ push_temporary_allocator :: () #expand {
 #load "day12.jai";
 #load "day13.jai";
 #load "day14.jai";
+#load "day15.jai";
 
 #import "Basic";
 #import "File";
